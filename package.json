@@ -1,0 +1,20 @@
+{
+  "name": "w1-forsta",
+  "displayName": "w1 Forsta",
+  "description": "Most used w1 Forsta functions",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  }
+}
