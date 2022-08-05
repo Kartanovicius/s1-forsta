@@ -13,4 +13,14 @@
     "prefix": ["qrs"],
     "body": ["if (!QuestionErrors()) {  \n\tif ( && f(\"softError\").none(\"${1:1}\")) {    \n\t\tf(\"softError_${1:1}\").set(1);    \n\t\tSetQuestionErrorMessage(CurrentLang(),f(\"errorMessage\")[\"4\"].label());    \n\t\tRaiseError();  \n\t}\n}"],
   },
+
+  "validation starting point with check for characters": {
+    "prefix": ["qr_char"],
+    "body": ["if(!QuestionErrors()) {  \n\tif (f(CurrentForm()).toString().replace(/\\s+/g, '').Length < 5) {    \n\t\tRaiseError();    \n\t\tSetQuestionErrorMessage(CurrentLang(),f(\"errorMessage\")[\"3\"].label());  \n\t}\n}"],
+  },
+
+  "validation starting point with check for words": {
+    "prefix": ["qr_word"],
+    "body": ["if(!QuestionErrors()) {  \n\tif (f(CurrentForm()).get().split(/[\\s\\.,]/).Length < 5) {    \n\t\tRaiseError();    \n\t\tSetQuestionErrorMessage(CurrentLang(),f(\"errorMessage\")[\"3\"].label());  \n\t}\n}"],
+  },
 }
