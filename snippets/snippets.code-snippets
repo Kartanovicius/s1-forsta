@@ -2,11 +2,15 @@
   "validation starting point": {
     "prefix": ["qr"],
     "body": ["if (!QuestionErrors()) {\n\tif ($0) {\n\t\tSetQuestionErrorMessage(CurrentLang(), f(\"errorMessage\")[\"4\"].label());\n\t\tRaiseError();\n\t}\n}"],
-    "description": "Starting point for validation script"
   },
+
   "validation starting point with for loop": {
     "prefix": ["qrf"],
-    "body": ["if (!QuestionErrors()) {  \n\tvar codes = f(${1:currentForm()}).domainValues()  \n\n\tfor (var ${2:i} = 0; ${2:i} < codes.length; ${2:i}++) {    \n\t\tconst code = codes[${2:i}];    \n\n\t\tif (true) {      \n\t\t\tAppendQuestionErrorMessage(CurrentLang(), f(\"errorMessage\")[\"4\"].label());      \n\t\t\tRaiseError();    \n\t\t}  \n\t}\n}"],
-    "description": "Starting point for validation script with for loop and AppendQuestionErrorMessage() function"
+    "body": ["if (!QuestionErrors()) {  \n\tvar codes = f(${1:CurrentForm()}).domainValues()  \n\n\tfor (var ${2:i} = 0; ${2:i} < codes.length; ${2:i}++) {    \n\t\tconst code = codes[${2:i}];    \n\n\t\tif (${3}) {      \n\t\t\tAppendQuestionErrorMessage(CurrentLang(), f(\"errorMessage\")[\"4\"].label());      \n\t\t\tRaiseError();    \n\t\t}  \n\t}\n}"],
+  },
+
+  "validation starting point with softerror": {
+    "prefix": ["qrs"],
+    "body": ["if (!QuestionErrors()) {  \n\tif ( && f(\"softError\").none(\"${1:1}\")) {    \n\t\tf(\"softError_${1:1}\").set(1);    \n\t\tSetQuestionErrorMessage(CurrentLang(),f(\"errorMessage\")[\"4\"].label());    \n\t\tRaiseError();  \n\t}\n}"],
   },
 }
